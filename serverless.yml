@@ -1,0 +1,46 @@
+service: angular-serverless-app
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-offline
+  - serverless-api-compression
+  - serverless-associate-waf
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  memorySize: 2048
+  timeout: 10
+  stage: dev
+  region: us-east-1
+  deploymentBucket:
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - src/**
+    - node_modules/**
+    - firebug-lite/**
+    - e2e/**
+    - coverage/**
+    - .angular/**
+    - .vscode/**
+    - node_modules/**
+  include:
+      - node_modules/**
+
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+  contentCompression: 1024
+  apigwBinary:
+    types:
+      - '*/*'
+
+functions:
+  api:
+    handler: lambda.universal
+    events:
+      - http: ANY /{proxy+}
+      - http: ANY /

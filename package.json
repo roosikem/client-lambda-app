@@ -1,0 +1,22 @@
+{
+  "name": "lambda-client-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lambda.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-serverless-express": "^3.4.0",
+    "axios": "^1.6.7",
+    "crypto-js": "^4.2.0",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-offline": "^13.3.2"
+  },
+  "devDependencies": {
+    "serverless-api-compression": "^1.0.1",
+    "serverless-associate-waf": "^1.2.1"
+  }
+}
